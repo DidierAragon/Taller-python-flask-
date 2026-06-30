@@ -4,3 +4,4 @@ tareas.db
 *.db
 venv/
 .env
+.venv
