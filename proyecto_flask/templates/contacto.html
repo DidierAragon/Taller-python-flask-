@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block titulo %}Nuevo Mensaje{% endblock %}
+{% block contenido %}
+    <h2>Nuevo Mensaje</h2>
+    <form action="{{ url_for('contacto') }}" method="POST" class="form-contacto">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" id="nombre" required>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="mensaje">Mensaje</label>
+        <textarea name="mensaje" id="mensaje" rows="4" required></textarea>
+
+        <button type="submit" class="btn">Enviar</button>
+    </form>
+    <a href="{{ url_for('index') }}" class="btn">Volver</a>
+{% endblock %}

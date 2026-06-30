@@ -1,0 +1,6 @@
+*.pyc
+__pycache__/
+tareas.db
+*.db
+venv/
+.env

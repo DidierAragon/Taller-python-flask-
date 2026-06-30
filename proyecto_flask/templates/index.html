@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block titulo %}Inicio - Mensajes{% endblock %}
+{% block contenido %}
+    <div class="pasarela">
+        <img src="{{ url_for('static', filename='img/1000284706.jpg') }}" class="activa" alt="img1">
+        <img src="{{ url_for('static', filename='img/1000284707.jpg') }}" alt="img2">
+        <img src="{{ url_for('static', filename='img/1000284708.jpg') }}" alt="img3">
+        <img src="{{ url_for('static', filename='img/1000284709.jpg') }}" alt="img4">
+        <img src="{{ url_for('static', filename='img/1000284710.jpg') }}" alt="img5">
+        <img src="{{ url_for('static', filename='img/1000284711.jpg') }}" alt="img6">
+    </div>
+
+    <script>
+        var imgs = document.querySelectorAll('.pasarela img');
+        var idx = 0;
+        setInterval(function() {
+            imgs[idx].classList.remove('activa');
+            idx = (idx + 1) % imgs.length;
+            imgs[idx].classList.add('activa');
+        }, 3000);
+    </script>
+
+    <a href="{{ url_for('contacto') }}" class="btn">Nuevo Mensaje</a>
+    {% if mensajes %}
+        <ul class="lista-mensajes">
+        {% for m in mensajes %}
+            <li>
+                <strong>{{ m[1] }}</strong> - <span class="email">{{ m[2] }}</span>
+                <p>{{ m[3] }}</p>
+                <a href="{{ url_for('eliminar', id=m[0]) }}" class="btn-eliminar"
+                   onclick="return confirm('Eliminar este mensaje?')">Eliminar</a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay mensajes.</p>
+    {% endif %}
+{% endblock %}
